@@ -13,10 +13,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { formSchema } from "./lib/utils";
+// import { zodResolver } from "@hookform/resolvers/zod";
+// import { useForm } from "react-hook-form";
+// import { z } from "zod";
+// import { formSchema } from "./lib/utils";
 
 import {
   Card,
@@ -45,6 +45,7 @@ interface FormEntry {
 }
 
 function App() {
+  /*
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {},
@@ -56,6 +57,7 @@ function App() {
     // ✅ This will be type-safe and validated.
     console.log(values);
   }
+  **/
 
   const [formData, setFormData] = useState({});
   const [entries, setEntries] = useState<FormEntry[]>([]);
@@ -91,7 +93,7 @@ function App() {
     setEntries(entries.filter((entry) => entry.id !== id));
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: any) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -99,9 +101,9 @@ function App() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    console.log("Form submitted:", formData, entries);
     // Here you would typically send the data to your backend
   };
 
